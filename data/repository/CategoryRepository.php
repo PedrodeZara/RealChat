@@ -39,6 +39,7 @@ class CategoryRepository {
         }
         catch (Exception $e) {
             echo $e;
+            return false;
         }
     }
 

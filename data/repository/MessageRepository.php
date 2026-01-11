@@ -14,13 +14,14 @@ class MessageRepository {
         
         try {
             return $stmt->execute([
-                "descri" => $mes->getDescricao(),
-                "idU" => $mes->getIdUserMandante(),
-                "idC" => $mes->getIdUserReceptor()
+                ":descri" => $mes->getDescricao(),
+                ":idU" => $mes->getIdUserMandante(),
+                ":idC" => $mes->getIdUserReceptor()
             ]);
         }
         catch (Exception $e) {
             echo $e;
+            return false;
         }
     }
 
@@ -38,14 +39,15 @@ class MessageRepository {
 
         try {
             $stmt->execute([
-                "idU" => $mes->getIdUserMandante(),
-                "idC" => $mes->getIdUserReceptor()
+                ":idU" => $mes->getIdUserMandante(),
+                ":idC" => $mes->getIdUserReceptor()
             ]);
 
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
         catch (Exception $e) {
             echo $e;
+            return false;
         }
     }
 
