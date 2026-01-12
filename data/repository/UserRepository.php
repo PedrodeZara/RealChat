@@ -9,9 +9,9 @@ class UserRepository {
         $this->pdo = Database::getConnection();
     }
 
-    public function getById(int $id): ?array {
-        $stmt = $this->pdo->prepare("SELECT * FROM user WHERE id = :id");
-        $stmt->execute([":id" => $id]);
+    public function getByNumber(string $telefone): ?array {
+        $stmt = $this->pdo->prepare("SELECT * FROM user WHERE telefone = :telefone");
+        $stmt->execute([":telefone" => $telefone]);
         $stmt->fetch(PDO::FETCH_ASSOC);
 
         try {
