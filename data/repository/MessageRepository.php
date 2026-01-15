@@ -61,4 +61,18 @@ class MessageRepository {
             return false;
         } 
     } 
+
+    public function findId(Message $mes): int {
+        $stmt = $this->pdo->prepare("SELECT id FROM message WHERE descricao LIKE :descricao");
+        
+        try {
+            $data = $stmt->execute([':descricao' => '%'.$mes->getDescricao().'%']);
+            return $data->fetch(PDO::FETCH_ASSOC);
+        }
+
+        catch (PDOException $ex) {
+            echo $ex;
+        }
+
+    }
 }
