@@ -56,7 +56,28 @@ class MessageController {
 
     }
 
-    
+    public function delete(): void {
+        $content = $_POST["descricao"];
+        
+        if(!$content) {
+            echo json_encode(['erro' => 'dados invalidos']);
+            return;
+        }
+
+        $message = new Message(null, $content, null, null);
+        $data = $this->repository->delete($message);
+        
+        if (!data) {
+            http_response_code(404);
+            echo json_encode(['error' => 'message not found']);
+            return;
+        }
+        else {
+            http_response_code(200);
+            echo json_encode($data);
+        }
+
+    }
 
 
 }
