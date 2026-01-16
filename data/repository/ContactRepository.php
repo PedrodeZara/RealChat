@@ -7,6 +7,23 @@ class ContactRepository {
         $this->pdo = Database::getConnection();
     }
 
+    public function insert(int $id_cat, int $id_cont, int $id_user):bool {
+        $stmt = $this->pdo->prepare("INSERT INTO contacts (id_cat,id_cont,id_user) VALUES (:idC,:idCo,:idU)");
+
+        try {
+            $stmt->execute([
+                ":idC" => $id_cat,
+                ":idCo" => $id_cont,
+                ":idU" => $id_user
+            ]);
+        }
+
+        catch (PDOException $ex) {
+            echo $ex;
+            return false;
+        }
+    }
+
     public function select($idUser): array {
         $stmt = $this->pdo->prepare(
         "SELECT 
