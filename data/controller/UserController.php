@@ -10,7 +10,7 @@ class UserController {
         $this->repository = new UserRepository();
     }
 
-    public function search(): void {
+    public function select(): void {
         try {   
             $telefone = $_POST['telefone'] ?? null;
             // Adicionar senha
@@ -35,7 +35,7 @@ class UserController {
         }
     }   
 
-    public function create(): void {
+    public function insert(): void {
         try {   
             $nome = $_POST['nome'] ?? null;
             $descricao = $_POST['descricao'] ?? null;
