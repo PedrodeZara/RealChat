@@ -17,7 +17,7 @@ class Database {
             }
 
             catch (PDOException $ex) {
-                echo ex;
+                echo $ex;
             }
         }
         return self::$pdo;
