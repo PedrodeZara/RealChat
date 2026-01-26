@@ -32,8 +32,4 @@ class User {
     public function getTelefone(): string {
         return $this->telefone;
     }
-
-    public function setDescricao($telefone): void {
-        $this->telefone = $telefone;
-    }
 }

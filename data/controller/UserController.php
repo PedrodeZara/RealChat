@@ -1,7 +1,7 @@
 <?php
 
-require_once "../repository/UserRepository.php";
-require_once "../models/user.php";
+require_once "../data/repository/UserRepository.php";
+require_once "../data/models/user.php";
 
 class UserController {
     private UserRepository $repository;

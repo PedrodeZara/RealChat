@@ -1,6 +1,6 @@
 <?php
-require_once "../database/connexion.php";
-require_once "../models/message.php";
+require_once "../data/database/connexion.php";
+require_once "../data/models/message.php";
 
 class CategoryRepository {
     private PDO $pdo;

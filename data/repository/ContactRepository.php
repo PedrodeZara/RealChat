@@ -1,4 +1,5 @@
 <?php
+require_once "../data/database/connexion.php";
 
 class ContactRepository {
     private PDO $pdo;

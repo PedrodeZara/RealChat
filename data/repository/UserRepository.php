@@ -1,6 +1,6 @@
 <?php 
-require_once "../database/connexion.php";
-require_once "../models/user.php";
+require_once "../data/database/connexion.php";
+require_once "../data/models/user.php";
 
 class UserRepository {
     private PDO $pdo;
@@ -18,7 +18,7 @@ class UserRepository {
             return $stmt ?: null;
         }
         catch (PDOException $e) {
-            echo $e
+            echo $e;
         }
     }
 
@@ -33,7 +33,7 @@ class UserRepository {
             ]);
         }
         catch (PDOException $e) {
-            echo $e
+            echo $e;
             return false;
         }
     }
@@ -49,7 +49,7 @@ class UserRepository {
             ]);
         }
         catch (PDOException $e) {
-            echo $e
+            echo $e;
             return false;
         }
     }

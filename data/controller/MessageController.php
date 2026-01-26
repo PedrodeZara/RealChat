@@ -18,7 +18,7 @@ class MessageController {
             return;
         }
 
-        $message = new Message(null, string $content, int $id_user, int $id_contact);
+        $message = new Message(null, $content, $id_user, $id_contact);
         $sucess = $this->repository->insert($message);
 
         if ($sucess) {
@@ -26,7 +26,7 @@ class MessageController {
             echo json_encode(["sucess" => "post message"]);
         }
         else {
-            http_response_code(401)
+            http_response_code(401);
             echo json_encode(["error" => "insert problem"]);
         }
 
@@ -41,7 +41,7 @@ class MessageController {
             return;
         }
 
-        $message = new Message(null, null, int $id_user, int $id_contact);
+        $message = new Message(null, null, $id_user, $id_contact);
         $data = $this->repository->select($message);
         
         if (!data) {

@@ -24,7 +24,7 @@ class CategoryController {
             echo json_encode(["sucess" => "Categoria inserida"]);
         }
         else {
-            http_response_code(401)
+            http_response_code(401);
             echo json_encode(["error" => "insert problem"]);
         }
 
@@ -47,7 +47,7 @@ class CategoryController {
             echo json_encode(["sucess" => "post message"]);
         }
         else {
-            http_response_code(401)
+            http_response_code(401);
             echo json_encode(["error" => "insert problem"]);
         }
 
@@ -70,7 +70,7 @@ class CategoryController {
             echo json_encode(["sucess" => "post message"]);
         }
         else {
-            http_response_code(401)
+            http_response_code(401);
             echo json_encode(["error" => "insert problem"]);
         }
 

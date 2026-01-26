@@ -1,6 +1,6 @@
 <?php
 
-require_once "../repository/ContactRepository.php";
+require_once "../data/repository/ContactRepository.php";
 
 class ContactsController {
     private ContactRepository $repository;
@@ -32,7 +32,7 @@ class ContactsController {
         echo json_encode(["Sucess" => "Usuário adicionado"]);
     }
 
-    public function search(): array {
+    public function search() {
         $idUser = $_POST['idU'];
         
         if(!$idUser) {
@@ -53,7 +53,7 @@ class ContactsController {
         echo json_encode($data);
     }
 
-    public function delete(): array {
+    public function delete() {
         $idUser = $_POST['idU'];
         
         if(!$idUser) {
