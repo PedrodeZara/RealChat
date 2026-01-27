@@ -9,6 +9,18 @@ class UserRepository {
         $this->pdo = Database::getConnection();
     }
 
+    public function getUsers() {
+        $stmt = $this->pdo->prepare("SELECT * FROM user");
+        $stmt->execute();
+        
+        try {
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+        catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
     public function getByNumber(string $telefone): ?array {
         $stmt = $this->pdo->prepare("SELECT * FROM user WHERE telefone = :telefone");
         $stmt->execute([":telefone" => $telefone]);
@@ -57,7 +69,7 @@ class UserRepository {
     public function delete($id): bool {
         $stmt = $this->pdo->prepare("DELETE FROM user WHERE id = :id");
         try {
-            $stmt->execute(["id" => $id]);
+            return $stmt->execute(["id" => $id]);
         }
         catch(PDOException $e) {
             echo $e;

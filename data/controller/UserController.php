@@ -1,7 +1,9 @@
 <?php
+header('Content-Type: application/json');
 
 require_once "../data/repository/UserRepository.php";
 require_once "../data/models/user.php";
+
 
 class UserController {
     private UserRepository $repository;
@@ -12,17 +14,11 @@ class UserController {
 
     public function select(): void {
         try {   
-            $telefone = $_POST['telefone'] ?? null;
-            // Adicionar senha
+            $input = json_decode(file_get_contents("php://input"), true);
+
+            $user = $this->repository->getUsers();
             
-            if (!$telefone) {
-                echo json_encode(["erro" => "dados inválido"]);
-                return;
-            }
-
-            $user = $this->repository->getByNumber($telefone);
-
-            if ($valid) {
+            if ($user) {
                 echo json_encode($user);
             }
             else {
@@ -37,17 +33,18 @@ class UserController {
 
     public function insert(): void {
         try {   
-            $nome = $_POST['nome'] ?? null;
-            $descricao = $_POST['descricao'] ?? null;
-            $telefone = $_POST['telefone'] ?? null;
+            $input = json_decode(file_get_contents("php://input"), true);
+            $nome = $input['nome'] ?? null;
+            $descricao = $input['descricao'] ?? null;
+            $telefone = $input['telefone'] ?? null;
             // Adicionar senha
             
             if (!$nome || !$descricao || !$telefone) {
-                echo json_encode(["erro" => "dados inválido"]);
+                echo json_encode(["erro" => "dados inválido","nome" => $nome]);
                 return;
             }
             
-            $user = new User(null, $nome, $descricao, $telefone);
+            $user = new User($nome, $descricao, $telefone);
 
             $valid = $this->repository->insert($user);
 
@@ -66,18 +63,20 @@ class UserController {
 
     public function update():void {
         try {   
-            $nome = $_POST['nome'] ?? null;
-            $descricao = $_POST['descricao'] ?? null;
-            $telefone = $_POST['telefone'] ?? null;
-            $id = $_POST['id'] ?? null;
+            $input = json_decode(file_get_contents("php://input"), true);
+            $nome = $input['nome'] ?? null;
+            $descricao = $input['descricao'] ?? null;
+            $telefone = $input['telefone'] ?? null;
+            $id = $input['id'] ?? null;
 
             
-            if (!$nome || !$descricao) {
+            if (!$nome || !$descricao || !$id) {
                 echo json_encode(["erro" => "dados inválido"]);
                 return;
             }
             
-            $user = new User(null, $nome, $descricao, $telefone);
+
+            $user = new User( $nome, $descricao, $telefone);
 
             $valid = $this->repository->update($user, $id);
 
@@ -96,9 +95,10 @@ class UserController {
 
     public function delete():void {
         try {   
-            $id = $_POST['id'] ?? null;
+            $input = json_decode(file_get_contents("php://input"), true);
+            $id = $input['id'] ?? null;
 
-            if (!id) {
+            if (!$id) {
                 echo json_encode(["erro" => "dados inválido"]);
                 return;
             }
