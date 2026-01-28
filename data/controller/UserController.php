@@ -99,7 +99,7 @@ class UserController {
             $id = $input['id'] ?? null;
 
             if (!$id) {
-                echo json_encode(["erro" => "dados inválido"]);
+                echo json_encode(["erro" => "dados inválido", "id" => $id]);
                 return;
             }
 
