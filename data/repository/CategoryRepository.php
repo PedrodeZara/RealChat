@@ -23,18 +23,13 @@ class CategoryRepository {
         }
     }
 
-    public function select($id): array {
+    public function select(): array {
         $stmt = $this->pdo->prepare(
-            "SELECT c.nome FROM category c
-            INNER JOIN user u ON u.id = c.id_userCat
-            WHERE u.id = :id"
+            "SELECT * FROM category c"
         );
 
         try {
-            $stmt->execute([
-                ":id" => $id
-            ]);
-
+            $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
         catch (Exception $e) {
@@ -46,7 +41,7 @@ class CategoryRepository {
     public function delete($id): bool {
         $stmt = $this->pdo->prepare("DELETE FROM category WHERE id = :id");
         try {
-            $stmt->execute(["id" => $id]);
+            return $stmt->execute([":id" => $id]);
         }
         catch(PDOException $e) {
             echo $e;

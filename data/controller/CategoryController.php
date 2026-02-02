@@ -1,14 +1,15 @@
 <?php
 
 class CategoryController {
-    private ategoryRepository $repository;
+    private CategoryRepository $repository;
 
     public function __construct() {
-        $this->repository = MategoryRepository();
+        $this->repository = new CategoryRepository();
     }
 
-    public function create():void {
-        $name = $_POST["nome"];
+    public function insert():void {
+        $input = json_decode(file_get_contents("php://input"), true);
+        $name = $input["nome"];
 
         if(!$name) {
             http_response_code(400);
@@ -16,7 +17,7 @@ class CategoryController {
             return;
         }
 
-        $message = new Category(null, $name);
+        $message = new Category($name);
         $sucess = $this->repository->insert($message);
 
         if ($sucess) {
@@ -30,21 +31,12 @@ class CategoryController {
 
     }
 
-    public function search():void {
-        $id = $_POST["id"];
-
-        if(!$id) {
-            http_response_code(400);
-            echo json_encode(['erro' => 'dados invalidos']);
-            return;
-        }
-
-        $message = new Category($id, null);
-        $sucess = $this->repository->select($message);
+    public function select():void {
+        $sucess = $this->repository->select();
 
         if ($sucess) {
             http_response_code(201);
-            echo json_encode(["sucess" => "post message"]);
+            echo json_encode($sucess);
         }
         else {
             http_response_code(401);
@@ -53,8 +45,9 @@ class CategoryController {
 
     }
 
-    public function delete():void {
-        $id = $_POST["id"];
+    public function delete() {
+        $input = json_decode(file_get_contents("php://input"), true);
+        $id = $input["id"];
 
         if(!$id) {
             http_response_code(400);
@@ -62,16 +55,18 @@ class CategoryController {
             return;
         }
 
-        $message = new Category($id, null);
+        $message = new Category($id);
+        $message->setId($id);
+
         $sucess = $this->repository->delete($id);
 
         if ($sucess) {
             http_response_code(201);
-            echo json_encode(["sucess" => "post message"]);
+            echo json_encode(["sucess" => "deletado"]);
         }
         else {
             http_response_code(401);
-            echo json_encode(["error" => "insert problem"]);
+            echo json_encode(["error" => "problema ao excluir"]);
         }
 
     }

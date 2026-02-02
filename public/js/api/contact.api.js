@@ -7,10 +7,9 @@ export default async function ContactAPI(method,data) {
         method: method,
         headers: {"Content-type": "application/json"},
         body: data ? JSON.stringify({
-            id: data.id,
-            nome: data.nome,
-            descricao: data.descricao,
-            telefone: data.telefone
+            idCategory: data.idCategory,
+            idContact: data.idContact,
+            idUser: data.idUser
         }) : undefined
     })
     .then(response => {

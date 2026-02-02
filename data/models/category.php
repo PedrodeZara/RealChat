@@ -4,8 +4,7 @@ class Category {
     private int $id;
     private string $name;
 
-    public function __construct(int $id, string $name) {
-        $this->id = $id;
+    public function __construct(string $name) {
         $this->name = $name;
     }
 
@@ -16,5 +15,9 @@ class Category {
 
     public function setName(string $name): string {
         return $this->name = $name;
+    }
+
+    public function setId(int $id): string {
+        return $this->id = $id;
     }
 }
