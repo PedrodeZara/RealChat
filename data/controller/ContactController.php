@@ -2,7 +2,7 @@
 
 require_once "../data/repository/ContactRepository.php";
 
-class ContactsController {
+class ContactController {
     private ContactRepository $repository;
 
     public function __construct() {
@@ -10,17 +10,18 @@ class ContactsController {
     }
 
     public function insert(): void {
-        $idC = $_POST['idC'];
-        $idCon = $_POST['idCon'];
-        $idU = $_POST['idU'];
+        $input = json_decode(file_get_contents("php://input"), true);
+        $idCategory = $input['idCategory'];
+        $idContact = $input['idContact'];
+        $idUser = $input['idUser'];
         
-        if(!$idC || $idCon || $idU) {
+        if(!$idCategory || !$idContact || !$idUser) {
             http_response_code(400);
             echo json_encode(["error" => "ids inválidos ou não encontrado"]);
             return;
         }
 
-        $data = $this->repository->insert($idC,$idCon,$idU);
+        $data = $this->repository->insert($idCategory,$idContact,$idUser);
         
         if (!$data) {
             http_response_code(402);
@@ -33,7 +34,8 @@ class ContactsController {
     }
 
     public function search() {
-        $idUser = $_POST['idU'];
+        /*$idUser = $_POST['idUser'];*/
+        $idUser = 1;
         
         if(!$idUser) {
             http_response_code(400);
@@ -54,11 +56,12 @@ class ContactsController {
     }
 
     public function delete() {
-        $idUser = $_POST['idU'];
+        $input = json_decode(file_get_contents("php://input"), true);
+        $idUser = $input['idUser'];
         
         if(!$idUser) {
             http_response_code(400);
-            echo json_encode(["error" => "id inválido ou não encontrado"]);
+            echo json_encode(["error" => "id inválido ou não encontrado", "idUser" => $idUser]);
             return;
         }
 

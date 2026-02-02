@@ -75,7 +75,7 @@ switch (true) {
 
 
     case $uri === '/contact' && $method === 'GET':
-        (new ContactController())->select();
+        (new ContactController())->search();
         break;
 
     case $uri === '/contact' && $method === 'POST':

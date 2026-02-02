@@ -1,5 +1,5 @@
-export default async function UserAPI(method,data) {
-    let url = "http://127.0.0.1:8000/user";
+export default async function ContactAPI(method,data) {
+    let url = "http://127.0.0.1:8000/contact";
     let louding = false;
     let dataUser = null; 
 
@@ -15,7 +15,7 @@ export default async function UserAPI(method,data) {
     })
     .then(response => {
         response ? louding = true : undefined;
-        return response.json();
+        response.json();
 
     })
     .then(data => {
@@ -27,4 +27,4 @@ export default async function UserAPI(method,data) {
 }
 
 
-UserAPI("GET");
+ContactAPI("GET");
