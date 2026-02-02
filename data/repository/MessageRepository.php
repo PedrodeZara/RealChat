@@ -10,7 +10,7 @@ class MessageRepository {
     }
 
     public function insert(Message $mes):bool {
-        $stmt = $this->pdo->prepare("INSERT INTO messages (descricao, id_user_FK, id_contact_FK) VALUES (:descri,:idU,:idC)");
+        $stmt = $this->pdo->prepare("INSERT INTO messages (descricao, id_user, id_con) VALUES (:descri,:idU,:idC)");
         
         try {
             return $stmt->execute([
@@ -28,12 +28,18 @@ class MessageRepository {
     public function select(Message $mes): array {
         $stmt = $this->pdo->prepare(
             "SELECT 
-                m.descricao AS mensagem
+                m.id,
+                m.descricao AS mensagem,
+                u.nome AS User,
+                u1.nome AS Contato,
+                u1.nome AS 'Quem enviou'
             FROM messages m
-            INNER JOIN users u ON u.id  = m.id_user_FK
-            INNER JOIN users u1 ON u1.id = m.id_contact_FK
-            WHERE u.id = :idU 
-                AND u1.id = :idC
+            INNER JOIN user u ON u.id  = m.id_user
+            INNER JOIN user u1 ON u1.id = m.id_con
+            WHERE 
+                (m.id_user = :idU AND m.id_con = :idC)
+                OR
+                (m.id_user = :idC AND m.id_con = :idU)
             ORDER BY m.id"
         );
 
@@ -52,9 +58,9 @@ class MessageRepository {
     }
 
     public function delete($id): bool {
-        $stmt = $this->pdo->prepare("DELETE FROM message WHERE id = :id");
+        $stmt = $this->pdo->prepare("DELETE FROM messages WHERE id = :id");
         try {
-            $stmt->execute(["id" => $id]);
+            return $stmt->execute([":id" => $id]);
         }
         catch(PDOException $e) {
             echo $e;

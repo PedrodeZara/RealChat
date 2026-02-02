@@ -23,20 +23,20 @@ $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $uri = str_replace('/index.php', '', $uri);
 
 switch (true) {
-    case $uri === '/messages' && $method === 'GET':
-        (new MessagesController())->select();
+    case $uri === '/message' && $method === 'GET':
+        (new MessageController())->select();
         break;
 
-    case $uri === '/messages' && $method === 'POST':
-        (new MessagesController())->insert();
+    case $uri === '/message' && $method === 'POST':
+        (new MessageController())->insert();
         break;
 
-    case $uri === '/messages' && $method === 'PUT':
-        (new MessagesController())->update();
+    case $uri === '/message' && $method === 'PUT':
+        (new MessageController())->update();
         break;
 
-    case $uri === '/messages' && $method === 'DELETE':
-        (new MessagesController())->delete();
+    case $uri === '/message' && $method === 'DELETE':
+        (new MessageController())->delete();
         break;
 
 

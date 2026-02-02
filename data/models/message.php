@@ -6,15 +6,8 @@ class Message {
     private int $idUserMandante;
     private int $idUserReceptor;
 
-    public function __construct(int $id, string $descricao, int $idUserMandante, int $idUserReceptor) {
-        $this->id = $id;
-        $this->descricao = $descricao;
-        $this->idUserMandante = $idUserMandante;
-        $this->idUserReceptor = $idUserReceptor;
-    }
-
     public function getDescricao(): string {
-        return $this->$descricao;
+        return $this->descricao;
     }
 
     public function setDescricao($descricao): void {
@@ -22,11 +15,20 @@ class Message {
     }
 
     public function getIdUserMandante(): string {
-        return $this->$idUserMandante;
+        return $this->idUserMandante;
     }
 
     public function getIdUserReceptor(): string {
-        return $this->$idUserReceptor;
+        return $this->idUserReceptor;
     }
+    
+    public function setIdUserMandante($idUserMandante): void {
+        $this->idUserMandante = $idUserMandante;
+    }
+
+    public function setIdUserReceptor($idUserReceptor): void {
+        $this->idUserReceptor = $idUserReceptor;
+    }
+
 
 }

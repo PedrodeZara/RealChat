@@ -1,16 +1,21 @@
 <?php
+require_once "../data/repository/MessageRepository.php";
+require_once "../data/models/message.php";
+
 
 class MessageController {
     private MessageRepository $repository;
 
     public function __construct() {
-        $this->repository = MessageRepository();
+        $this->repository = new MessageRepository();
     }
 
-    public function create():void {
-        $content = $_POST["descricao"];
-        $id_user = $_POST["id_user"];
-        $id_contact = $_POST["id_contact"];
+    public function insert():void {
+        $input = json_decode(file_get_contents("php://input"), true);
+
+        $content = $input["descricao"];
+        $id_user = $input["id_user"];
+        $id_contact = $input["id_contact"];
 
         if(!$content || !$id_user || !$id_contact) {
             http_response_code(400);
@@ -18,7 +23,11 @@ class MessageController {
             return;
         }
 
-        $message = new Message(null, $content, $id_user, $id_contact);
+        $message = new Message();
+        $message->setIdUserMandante($id_user);
+        $message->setIdUserReceptor($id_contact);
+        $message->setdescricao($content);
+
         $sucess = $this->repository->insert($message);
 
         if ($sucess) {
@@ -33,18 +42,21 @@ class MessageController {
     }
 
     public function select() {
-        $id_user = $_POST["id_user"];
-        $id_contact = $_POST["id_contact"];
+        $input = json_decode(file_get_contents("php://input"), true);
+        $id_user = $input["id_user"];
+        $id_contact = $input["id_contact"];
 
         if(!$id_user || !$id_contact) {
             echo json_encode(['erro' => 'dados invalidos']);
             return;
         }
 
-        $message = new Message(null, null, $id_user, $id_contact);
+        $message = new Message();
+        $message->setIdUserMandante($id_user);
+        $message->setIdUserReceptor($id_contact);
         $data = $this->repository->select($message);
         
-        if (!data) {
+        if (!$data) {
             http_response_code(404);
             echo json_encode(['error' => 'user not found']);
             return;
@@ -57,17 +69,17 @@ class MessageController {
     }
 
     public function delete(): void {
-        $content = $_POST["descricao"];
-        
-        if(!$content) {
+        $input = json_decode(file_get_contents("php://input"), true);
+        $id = $input["id"];
+
+        if(!$id) {
             echo json_encode(['erro' => 'dados invalidos']);
             return;
         }
 
-        $message = new Message(null, $content, null, null);
-        $data = $this->repository->delete($message);
+        $data = $this->repository->delete($id);
         
-        if (!data) {
+        if (!$data) {
             http_response_code(404);
             echo json_encode(['error' => 'message not found']);
             return;
