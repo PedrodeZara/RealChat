@@ -26,5 +26,3 @@ export default async function UserAPI(method,data) {
     return {louding, dataUser};
 }
 
-
-UserAPI("GET");

@@ -23,5 +23,3 @@ export default async function CategoryAPI(method,data) {
     return {louding, dataCategory};
 }
 
-
-CategoryAPI("GET");

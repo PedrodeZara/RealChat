@@ -25,5 +25,3 @@ export default async function ContactAPI(method,data) {
     return {louding, dataUser};
 }
 
-
-ContactAPI("GET");
