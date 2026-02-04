@@ -1,5 +1,5 @@
 {
-  "name": "package",
+  "name": "realchat",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,5 +10,8 @@
   },
   "devDependencies": {
     "vite": "^7.2.4"
+  },
+  "dependencies": {
+    "react-dom": "^19.2.4"
   }
 }
