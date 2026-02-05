@@ -4,7 +4,6 @@ import useUserApi from "../../hooks/useUserApi";
 
 export default function ListUser() {
     const {request, loading, dataUser, error} = useUserApi();
-    console.log("dataUser:", dataUser);
 
 
     useEffect(()=> {
