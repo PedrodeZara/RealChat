@@ -1,6 +1,7 @@
 import React from "react";
-import ListUser from "./components/listUser/ListUser.jsx";
-import InsertButton from "./components/insertButton/InsertButton.jsx";
+import ListUser from "./components/User/listUser/ListUser.jsx";
+import InsertButton from "./components/User/insertButton/InsertButton.jsx";
+import DisplayMessages from "./components/Messages/displayMessages/DisplayMessages.jsx";
 import "./style.css";
 
 export default function App() {
@@ -9,6 +10,7 @@ export default function App() {
         <main>
           <ListUser/>
           <InsertButton/>
+          <DisplayMessages/>
         </main>
     </>
   );

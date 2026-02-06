@@ -2,7 +2,10 @@
 
 session_start();
 $_SESSION['id_user'] = $_GET["idInContact"];
-$_SESSION['id_reciever'] = $_GET["idInRecieve"];
+
+if (isset($_GET['idInReceive'])) {
+    $_SESSION['id_reciever'] = $_GET['idInReceive'];
+}
 
 header('Content-Type: application/json');
 header("Access-Control-Allow-Origin: http://localhost:5173");

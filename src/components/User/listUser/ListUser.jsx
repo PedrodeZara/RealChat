@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import UserBlock from "../userBlock/UserBlock.jsx"
-import useUserApi from "../../hooks/useUserApi"; 
+import useUserApi from "../../../hooks/useUserApi"; 
 
 export default function ListUser() {
     const {request, loading, dataUser, error} = useUserApi();

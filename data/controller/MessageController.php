@@ -42,12 +42,11 @@ class MessageController {
     }
 
     public function select() {
-        $input = json_decode(file_get_contents("php://input"), true);
-        $id_user = $input["id_user"];
-        $id_contact = $input["id_contact"];
+        $id_user = $_SESSION['id_user'];
+        $id_contact = $_SESSION['id_reciever'];
 
         if(!$id_user || !$id_contact) {
-            echo json_encode(['erro' => 'dados invalidos']);
+            echo json_encode(['erro' => 'dados invalidos', "idUser" => $id_contact]);
             return;
         }
 

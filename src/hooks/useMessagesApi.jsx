@@ -10,17 +10,17 @@ export default function useMessageApi() {
         setLoading(true)
 
         try {
-            const response = await fetch("http://127.0.0.1:8000/message" + `?idInContact=${idUser}&idInRecieve=${idContact}` , {
+            const response = await fetch("http://127.0.0.1:8000/message" + `?idInContact=${idUser}&idInReceive=${idContact}` , {
                 method,
                 headers: {"Content-Type": "application/json"},                
-                body: JSON.stringify(data)
+                body: data ? JSON.stringify(data) : undefined
             });
     
             const json = await response.json();
             setMessagesData(json);
         }
 
-        catch(er) {
+        catch(err) {
             setError(err);
         }
 
@@ -28,6 +28,6 @@ export default function useMessageApi() {
             setLoading(false);
         }
     }
-
-    return {messagesData, loading, error}
+    
+    return {request, messagesData, loading, error}
 }

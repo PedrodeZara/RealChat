@@ -32,7 +32,8 @@ class MessageRepository {
                 m.descricao AS mensagem,
                 u.nome AS User,
                 u1.nome AS Contato,
-                u1.nome AS 'Quem enviou'
+                u1.id as idContato,
+                u.id as idUser
             FROM messages m
             INNER JOIN user u ON u.id  = m.id_user
             INNER JOIN user u1 ON u1.id = m.id_con
