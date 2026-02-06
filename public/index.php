@@ -1,7 +1,8 @@
 <?php
 
 session_start();
-$_SESSION['id_user'] = 3;
+$_SESSION['id_user'] = $_GET["idInContact"];
+$_SESSION['id_reciever'] = $_GET["idInRecieve"];
 
 header('Content-Type: application/json');
 header("Access-Control-Allow-Origin: http://localhost:5173");
