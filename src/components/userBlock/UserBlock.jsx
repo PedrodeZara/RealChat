@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import useUserApi from "../../hooks/useUserApi"; 
 
-export default function UserBlock({nome, descricao, telefone}) {
+export default function UserBlock({nome, descricao, categoria}) {
 
     return(
         <section>
@@ -9,7 +9,7 @@ export default function UserBlock({nome, descricao, telefone}) {
                 <div>
                     <p>{nome}</p>
                     <p>{descricao}</p>
-                    <p>{telefone}</p>
+                    <p>{categoria}</p>
                 <br/>
                 </div>
             </button>

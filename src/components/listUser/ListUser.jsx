@@ -12,19 +12,23 @@ export default function ListUser() {
     }
         fetchData();
     }, []);
+
+    console.log(dataUser);
     
     return (
         <section>
             {loading && <p>Carregando...</p>}
             {error && <p>Erro</p>}
-            {dataUser.map(user => {
+            {dataUser ? dataUser.map(user => {
                 return <UserBlock
                     key = {user.id}                  
                     nome = {user.nome}                  
-                    descricao = {user.descricao}
-                    telefone = {user.telefone}                  
+                    descricao = {user.descContact}
+                    categoria = {user.Categoria}                  
                 />
-            })}
+            })
+            : <p>Não há contatos</p>
+            }
         </section>
     );
 }

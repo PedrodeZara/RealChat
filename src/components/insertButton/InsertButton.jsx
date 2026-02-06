@@ -5,13 +5,13 @@ export default function InsertButton() {
     const {request, loading} = useUserApi();
     const [showForm, setShowForm] = useState(false);
     const [dataForm, setDataForm] = useState({
-        nome: "",
-        decricao: "",
-        telefone: ""
+        idCategory: "",
+        idContact: "",
+        idUser: ""
     });
 
     async function fetchApi() {
-        dataForm.nome || dataForm.descricao || dataForm.telefone ? await request("POST", dataForm) : alert("Dados não suficientes");
+        dataForm.idCategory || dataForm.idContact || dataForm.idUser ? await request("POST", dataForm) : alert("Dados não suficientes");
     }
 
     return(
@@ -23,20 +23,20 @@ export default function InsertButton() {
                 <div>
                     <input 
                         type="text" 
-                        placeholder="Nome" 
-                        onChange={e => setDataForm({...dataForm, nome: e.target.value})}
+                        placeholder="idCategory" 
+                        onChange={e => setDataForm({...dataForm, idCategory: e.target.value})}
                     />
 
                     <input 
                         type="text" 
-                        placeholder="Descricao" 
-                        onChange={e => setDataForm({...dataForm, descricao: e.target.value})}
+                        placeholder="idContact" 
+                        onChange={e => setDataForm({...dataForm, idContact: e.target.value})}
                     />
 
                     <input 
                         type="text" 
-                        placeholder="Telefone" 
-                        onChange={e => setDataForm({...dataForm, telefone: e.target.value})}
+                        placeholder="idUser" 
+                        onChange={e => setDataForm({...dataForm, idUser: e.target.value})}
                     />
 
                     <button onClick={() => {

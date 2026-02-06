@@ -1,5 +1,4 @@
 <?php
-
 require_once "../data/repository/ContactRepository.php";
 
 class ContactController {
@@ -13,7 +12,7 @@ class ContactController {
         $input = json_decode(file_get_contents("php://input"), true);
         $idCategory = $input['idCategory'];
         $idContact = $input['idContact'];
-        $idUser = $input['idUser'];
+        $idUser = $_SESSION['id_user'];
         
         if(!$idCategory || !$idContact || !$idUser) {
             http_response_code(400);
@@ -35,11 +34,11 @@ class ContactController {
 
     public function search() {
         /*$idUser = $_POST['idUser'];*/
-        $idUser = 1;
+        $idUser = $_SESSION['id_user'];
         
         if(!$idUser) {
             http_response_code(400);
-            echo json_encode(["error" => "id inválido ou não encontrado"]);
+            echo json_encode(["error" => "id inválido ou não encontrado", "id" => $idUser]);
             return;
         }
 
@@ -47,7 +46,6 @@ class ContactController {
         
         if (!$data) {
             http_response_code(402);
-            echo json_encode(["error" => "dados não encontrados"]);
             return;
         }
 
