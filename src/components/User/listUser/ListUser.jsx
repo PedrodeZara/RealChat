@@ -13,7 +13,6 @@ export default function ListUser() {
         fetchData();
     }, []);
 
-    console.log(dataUser);
     
     return (
         <section>

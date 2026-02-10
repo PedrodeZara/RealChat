@@ -1,7 +1,9 @@
 <?php
 
 session_start();
-$_SESSION['id_user'] = $_GET["idInContact"];
+if (isset($_GET["idInContact"])) {
+    $_SESSION['id_user'] = $_GET["idInContact"];
+}
 
 if (isset($_GET['idInReceive'])) {
     $_SESSION['id_reciever'] = $_GET['idInReceive'];
@@ -18,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200);
     exit;
 }
+
 
 require_once __DIR__ . '/../data/database/connexion.php';
 
@@ -73,7 +76,6 @@ switch (true) {
         (new CategoryController())->delete();
         break;
 
-
     case $uri === '/user' && $method === 'GET':
         (new UserController())->select();
         break;
@@ -107,6 +109,12 @@ switch (true) {
         (new ContactController())->delete();
         break;
 
+    case $uri === '/session' && $method === 'GET':
+    echo json_encode([
+        "status" => isset($_SESSION["id_user"]),
+        "id_user" => $_SESSION["id_user"] ?? null
+    ]);
+    exit;
 
     default:
         http_response_code(404);

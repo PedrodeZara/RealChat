@@ -5,6 +5,7 @@ import MessageBlock from "../messageBlock/MessageBlock"
 export default function DisplayMessages() {
     const {request, messagesData, loading, error} = useMessageApi();
 
+
     useEffect(() => {
         async function fetchApi() {
             await request("GET", null, 2, 1);
@@ -12,8 +13,6 @@ export default function DisplayMessages() {
 
         fetchApi();
     }, [])
-
-    console.log(messagesData)
 
     return(
         <main>
