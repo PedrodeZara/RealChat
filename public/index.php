@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+$_SESSION['id_user'] = 2;
 if (isset($_GET["idInContact"])) {
     $_SESSION['id_user'] = $_GET["idInContact"];
 }
@@ -38,11 +39,24 @@ require_once __DIR__ . '/../data/controller/CategoryController.php';
 require_once __DIR__ . '/../data/controller/ContactController.php';
 require_once __DIR__ . '/../data/controller/UserController.php';
 
+
 $method = $_SERVER['REQUEST_METHOD'];
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $uri = str_replace('/index.php', '', $uri);
 
 switch (true) {
+
+    case $uri === '/login' && $method === 'POST':
+        $data = json_decode(file_get_contents("php://input"), true);
+
+        $_SESSION['id_user'] = $_GET["id_user"];
+
+        echo json_encode([
+            "status" => true,
+            "message" => "Login realizado"
+        ]);
+        break;
+
     case $uri === '/message' && $method === 'GET':
         (new MessageController())->select();
         break;

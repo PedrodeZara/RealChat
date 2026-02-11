@@ -8,7 +8,7 @@ export default function DisplayMessages({id}) {
 
     useEffect(() => {
         async function fetchApi() {
-            await request("GET", null, id, 1);
+            await request("GET", null, 2, 1);
         }
 
         fetchApi();

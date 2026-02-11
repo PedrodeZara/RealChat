@@ -7,19 +7,19 @@ export default function useEnconterUserId() {
     async function request() {
         try {
             
-            const response = fetch("http://127.0.0.1:8000/session", {
+            const response = await fetch("http://localhost:8000/session", {
                 method:"GET",
                 headers:{"Content-type": "application/json"},
                 credentials: "include"
             });
             
             const data = await response.json();
-            setId(data.id);
-            console.log("Sessão:", data);
+            console.log(data);
+            setId(Number(data.id_user));
         }
         
         catch (err) {
-            setError(err)
+            setError(err);
         }
     }
         

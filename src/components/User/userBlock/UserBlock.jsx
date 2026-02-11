@@ -2,11 +2,9 @@ import React, { useEffect } from "react";
 import useMessageApi from "../../../hooks/useMessagesApi";
 import DisplayMessages from "../../Messages/displayMessages/DisplayMessages";
 
-export default function UserBlock({id, nome, contato, descricao, categoria}) {
+export default function UserBlock({id, nome, contato, descricao, categoria, idU}) {
 
     const {request, messagesData, loading, error} = useMessageApi();
-    
-
 
     return(
         <section>

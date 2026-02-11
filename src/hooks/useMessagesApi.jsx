@@ -10,7 +10,7 @@ export default function useMessageApi() {
         setLoading(true)
 
         try {
-            const response = await fetch("http://127.0.0.1:8000/message" + `?idInContact=${idUser}&idInReceive=${idContact}` , {
+            const response = await fetch("http://localhost:8000/message" + `?idInContact=${idUser}&idInReceive=${idContact}` , {
                 method,
                 headers: {"Content-Type": "application/json"},                
                 body: data ? JSON.stringify(data) : undefined
