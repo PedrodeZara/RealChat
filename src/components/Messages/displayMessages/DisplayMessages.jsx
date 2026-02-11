@@ -2,13 +2,13 @@ import React, { useEffect } from "react";
 import useMessageApi from "../../../hooks/useMessagesApi";
 import MessageBlock from "../messageBlock/MessageBlock"
 
-export default function DisplayMessages() {
+export default function DisplayMessages({id}) {
     const {request, messagesData, loading, error} = useMessageApi();
 
 
     useEffect(() => {
         async function fetchApi() {
-            await request("GET", null, 2, 1);
+            await request("GET", null, id, 1);
         }
 
         fetchApi();
