@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-$_SESSION['id_user'] = 2;
+$_SESSION['id_user'] = 1;
 if (isset($_GET["idInContact"])) {
     $_SESSION['id_user'] = $_GET["idInContact"];
 }

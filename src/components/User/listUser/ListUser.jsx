@@ -8,7 +8,7 @@ export default function ListUser() {
 
     useEffect(()=> {
         async function fetchData() {
-            await request("GET", null, 1);
+            await request("GET", null, 2);
     }
         fetchData();
     }, []);
@@ -20,7 +20,7 @@ export default function ListUser() {
             {error && <p>Erro</p>}
             {dataUser ? dataUser.map(user => {
                 return <UserBlock
-                    key = {user.id}                  
+                    idCon = {user.idCon}                  
                     nome = {user.nome}                  
                     descricao = {user.descContact}
                     categoria = {user.Categoria}                  

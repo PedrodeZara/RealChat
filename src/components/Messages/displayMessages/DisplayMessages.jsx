@@ -8,11 +8,11 @@ export default function DisplayMessages({id}) {
 
     useEffect(() => {
         async function fetchApi() {
-            await request("GET", null, 2, 1);
+            await request("GET", null, 1, id);
         }
 
         fetchApi();
-    }, [])
+    }, [id])
 
     return(
         <main>
@@ -20,7 +20,6 @@ export default function DisplayMessages({id}) {
             {error && <p>Erro</p>}
             {messagesData && messagesData.map(data => {
                 return <MessageBlock
-                    key = {data.id}
                     nome = {data.User}
                     contato = {data.Contato}
                     mensagem = {data.mensagem}

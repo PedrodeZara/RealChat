@@ -12,7 +12,7 @@ export default function App() {
         <main>
           <ListUser/>
           <InsertButton/>
-          <DisplayMessages/>
+          
         </main>
     </>
   );
