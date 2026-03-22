@@ -8,7 +8,7 @@ export default function ListUser() {
 
     useEffect(()=> {
         async function fetchData() {
-            await request("GET", null, 2);
+            await request("GET", null, 1);
     }
         fetchData();
     }, []);
