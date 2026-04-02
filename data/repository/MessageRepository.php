@@ -10,13 +10,13 @@ class MessageRepository {
     }
 
     public function insert(Message $mes):bool {
-        $stmt = $this->pdo->prepare("INSERT INTO messages (descricao, id_user, id_con) VALUES (:descri,:idU,:idC)");
+        $stmt = $this->pdo->prepare("INSERT INTO messages (descricao, id_user, id_con) VALUES (:descri,:telefone_user,:telefone_con)");
         
         try {
             return $stmt->execute([
                 ":descri" => $mes->getDescricao(),
-                ":idU" => $mes->getIdUserMandante(),
-                ":idC" => $mes->getIdUserReceptor()
+                ":telefone_user" => $mes->getTelefoneUserMandante(),
+                ":telefone_con" => $mes->getTelefoneUserReceptor()
             ]);
         }
         catch (Exception $e) {
@@ -35,19 +35,19 @@ class MessageRepository {
                 u1.id as idContato,
                 u.id as idUser
             FROM messages m
-            INNER JOIN user u ON u.id  = m.id_user
-            INNER JOIN user u1 ON u1.id = m.id_con
+            INNER JOIN user u ON u.telefone  = m.telefone_user
+            INNER JOIN user u1 ON u1.telefone = m.telefone_con
             WHERE 
-                (m.id_user = :idU AND m.id_con = :idC)
+                (m.telefone_user = :telefoneUser AND m.telefone_con = :telefoneContato)
                 OR
-                (m.id_user = :idC AND m.id_con = :idU)
+                (m.telefone_user = :telefoneContato AND m.telefone_con = :telefoneUser)
             ORDER BY m.id"
         );
 
         try {
             $stmt->execute([
-                ":idU" => $mes->getIdUserMandante(),
-                ":idC" => $mes->getIdUserReceptor()
+                ":telefoneUser" => $mes->getTelefoneUserMandante(),
+                ":telefoneContato" => $mes->getTelefoneUserReceptor()
             ]);
 
             return $stmt->fetchAll(PDO::FETCH_ASSOC);

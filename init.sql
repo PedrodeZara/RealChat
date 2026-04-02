@@ -30,18 +30,23 @@ create table contacts (
 create table messages (
 	id int primary key auto_increment,
     descricao varchar(200) NOT NULL, 
-    id_user int, 
-    id_con int,
+    telefone_user char(11), 
+    telefone_con char(11),
 
-    constraint id_user_messages foreign key (id_user) references user (id),
-    constraint id_contact_messages foreign key (id_con) references user (id)
+    constraint telefone_user_messages foreign key (telefone_user) references user (telefone),
+    constraint telefone_contact_messages foreign key (telefone_con) references user (telefone)
 );
 
 insert user (nome, descricao, telefone) values ("Pessoa 1","Teste",11111111111);
 insert user (nome, descricao, telefone) values ("Pessoa 2","Teste",11111111112);
+insert user (nome, descricao, telefone) values ("Pessoa 3","Teste",11111111113);
+insert user (nome, descricao, telefone) values ("Pessoa 4","Teste",11111111114);
 insert into category (nome) values ('Categoria1');
 insert into contacts (id_cat, id_user,id_con) values (1,1,2);
-insert into messages (descricao,id_user,id_con) values ("Teste de mensagem de pessoa 1 para pessoa 2",1,2);
+insert into contacts (id_cat, id_user,id_con) values (1,1,3);
+insert into contacts (id_cat, id_user,id_con) values (1,1,4);
+insert into messages (descricao,telefone_user,telefone_con) values ("Teste de mensagem de pessoa 1 para pessoa 2",11111111111,11111111112);
+insert into messages (descricao,telefone_user,telefone_con) values ("Teste de mensagem de pessoa 1 para pessoa 3",11111111111,11111111113);
 
 
 SET FOREIGN_KEY_CHECKS=1;

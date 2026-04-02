@@ -24,8 +24,8 @@ class MessageController {
         }
 
         $message = new Message();
-        $message->setIdUserMandante($id_user);
-        $message->setIdUserReceptor($id_contact);
+        $message->setTelefoneUserMandante($id_user);
+        $message->setTelefoneUserReceptor($id_contact);
         $message->setdescricao($content);
 
         $sucess = $this->repository->insert($message);
@@ -51,8 +51,8 @@ class MessageController {
         }
 
         $message = new Message();
-        $message->setIdUserMandante($id_user);
-        $message->setIdUserReceptor($id_contact);
+        $message->setTelefoneUserMandante($id_user);
+        $message->setTelefoneUserReceptor($id_contact);
         $data = $this->repository->select($message);
         
         if (!$data) {

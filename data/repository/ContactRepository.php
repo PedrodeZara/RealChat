@@ -32,7 +32,8 @@ class ContactRepository {
             u1.id as idCon,     
             u.id as idDe,
             u1.descricao descContact, 
-            cat.nome as Categoria
+            cat.nome as categoria,
+            u1.telefone as telefone
         from contacts c 
         inner join user u on u.id = c.id_user
         inner join user u1 on u1.id = c.id_con 

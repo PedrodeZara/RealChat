@@ -13,6 +13,17 @@ services:
       - mysql_data:/var/lib/mysql
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
 
+  node: 
+    build: 
+      context: .
+      dockerfile: Dockerfile.node
+    container_name: node
+    ports:
+      - "5173:5173"
+    volumes:
+      - .:/app
+    command: npm run dev
+
   php:
     build: .
     container_name: php

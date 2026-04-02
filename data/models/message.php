@@ -3,8 +3,8 @@
 class Message {
     private int $id;
     private string $descricao;
-    private int $idUserMandante;
-    private int $idUserReceptor;
+    private string $telefoneUserMandante;
+    private string $telefoneUserReceptor;
 
     public function getDescricao(): string {
         return $this->descricao;
@@ -14,20 +14,20 @@ class Message {
         $this->descricao = $descricao;
     }
 
-    public function getIdUserMandante(): string {
-        return $this->idUserMandante;
+    public function getTelefoneUserMandante(): string {
+        return $this->telefoneUserMandante;
     }
 
-    public function getIdUserReceptor(): string {
-        return $this->idUserReceptor;
+    public function getTelefoneUserReceptor(): string {
+        return $this->telefoneUserReceptor;
     }
     
-    public function setIdUserMandante($idUserMandante): void {
-        $this->idUserMandante = $idUserMandante;
+    public function setTelefoneUserMandante($telefoneUserMandante): void {
+        $this->telefoneUserMandante = $telefoneUserMandante;
     }
 
-    public function setIdUserReceptor($idUserReceptor): void {
-        $this->idUserReceptor = $idUserReceptor;
+    public function setTelefoneUserReceptor($telefoneUserReceptor): void {
+        $this->telefoneUserReceptor = $telefoneUserReceptor;
     }
 
 

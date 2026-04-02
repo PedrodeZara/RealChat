@@ -23,7 +23,8 @@ export default function ListUser() {
                     idCon = {user.idCon}                  
                     nome = {user.nome}                  
                     descricao = {user.descContact}
-                    categoria = {user.Categoria}                  
+                    categoria = {user.categoria}                  
+                    telefone = {user.telefone}                  
                 />
             })
             : <p>Não há contatos</p>

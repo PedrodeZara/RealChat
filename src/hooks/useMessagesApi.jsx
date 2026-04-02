@@ -17,7 +17,14 @@ export default function useMessageApi() {
             });
     
             const json = await response.json();
-            setMessagesData(json);
+            
+            if (json.error) {
+                setMessagesData([]);
+            }
+
+            else {
+                setMessagesData(json);
+            }
         }
 
         catch(err) {

@@ -3,30 +3,49 @@ import useMessageApi from "../../../hooks/useMessagesApi";
 import DisplayMessages from "../../Messages/displayMessages/DisplayMessages";
 import useEnconterUserId from "../../../hooks/useEnconterUserId";
 
-export default function UserBlock({idCon, nome, descricao, categoria}) {
+export default function UserBlock({nome, descricao, categoria, telefone}) {
 
     const {request, messagesData, loading, error} = useMessageApi();
-    const [visu, setVisu] = useState(false)
+    const [visu, setVisu] = useState(false);
 
     return(
-        <section>
-            <button onClick={() => {setVisu(true)}}>
+        <section id = {`${telefone}`}
+        onClick={() => {
+            {visu ? setVisu(false):setVisu(true)}
+            request("GET", null, 11111111111,telefone);
+
+            
+        }}>
+            <button>
                 <div>
                     <p>{nome}</p>
                     <p>{descricao}</p>
                     <p>{categoria}</p>
+                    <p>{telefone}</p>
                 <br/>
                 </div>
             </button>
-
-            {setVisu && (
             
-            <DisplayMessages id={idCon}/>
+            {
+                
+                visu && (
+                    loading ? <p>Carregando...</p> :
+                    error ? <p>Erro ao carregar</p> :
+                    !messagesData || messagesData.length === 0 ? <p>Sem mensagens</p> :
+                    messagesData.map(item => (
+                        <p key={item.id}>
+                            <b>{item.User}:</b> {item.mensagem}
+                        </p>
+                    ))
+                )   
 
-            )
-
+                
             }
 
         </section>
+
+
     );
+
+    
 }
