@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import useMessageApi from "../../../hooks/useMessagesApi";
 import DisplayMessages from "../../Messages/displayMessages/DisplayMessages";
 import useEnconterUserId from "../../../hooks/useEnconterUserId";
+import styles from "./UserBlock.module.css";
 
 export default function UserBlock({nome, descricao, categoria, telefone}) {
 
@@ -10,6 +11,7 @@ export default function UserBlock({nome, descricao, categoria, telefone}) {
 
     return(
         <section id = {`${telefone}`}
+        className={styles.section}
         onClick={() => {
             if (!visu) {
                 setVisu(true);
@@ -20,12 +22,9 @@ export default function UserBlock({nome, descricao, categoria, telefone}) {
             }
             
         }}>
-            <button>
+            <button className={styles.buttonHover}>
                 <div>
                     <p>{nome}</p>
-                    <p>{descricao}</p>
-                    <p>{categoria}</p>
-                    <p>{telefone}</p>
                 <br/>
                 </div>
             </button>
