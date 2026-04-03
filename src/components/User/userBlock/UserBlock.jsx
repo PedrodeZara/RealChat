@@ -11,9 +11,13 @@ export default function UserBlock({nome, descricao, categoria, telefone}) {
     return(
         <section id = {`${telefone}`}
         onClick={() => {
-            {visu ? setVisu(false):setVisu(true)}
-            request("GET", null, 11111111111,telefone);
-
+            if (!visu) {
+                setVisu(true);
+                request("GET", null, 11111111111,telefone);
+            }
+            else {
+                setVisu(false);
+            }
             
         }}>
             <button>
@@ -33,7 +37,8 @@ export default function UserBlock({nome, descricao, categoria, telefone}) {
                     error ? <p>Erro ao carregar</p> :
                     !messagesData || messagesData.length === 0 ? <p>Sem mensagens</p> :
                     messagesData.map(item => (
-                        <p key={item.id}>
+                        <p key={item.telefone}
+                        style={{color: item.telefone_con != 11111111111 ? "blue" : "red"}}>
                             <b>{item.User}:</b> {item.mensagem}
                         </p>
                     ))

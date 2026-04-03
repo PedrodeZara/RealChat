@@ -33,7 +33,8 @@ class MessageRepository {
                 u.nome AS User,
                 u1.nome AS Contato,
                 u1.id as idContato,
-                u.id as idUser
+                u.id as idUser,
+                m.telefone_con as telefone_con
             FROM messages m
             INNER JOIN user u ON u.telefone  = m.telefone_user
             INNER JOIN user u1 ON u1.telefone = m.telefone_con
