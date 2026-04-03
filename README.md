@@ -1,5 +1,5 @@
 # RealChat - Fullstack Web System
-Versão: 0.1.1
+Versão: 0.1.2
 
 Sistema web para gerenciamento de contatos e troca de mensagens entre usuários, desenvolvido com PHP e MySQL, com ambiente totalmente containerizado utilizando Docker.
 O RealChat é uma aplicação backend que simula um sistema de comunicação entre usuários, permitindo o gerenciamento de contatos e envio de mensagens. O projeto foi estruturado com foco em organização de código, integração com banco de dados e execução em ambiente isolado com Docker.

@@ -5,10 +5,10 @@ services:
     image: mysql:8
     container_name: mysql_data
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: RealChat
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
     ports:
-      - "3306:3306"
+      - ${DB_PORT}
     volumes:
       - mysql_data:/var/lib/mysql
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
@@ -33,6 +33,13 @@ services:
       - .:/var/www/html
     depends_on:
       - mysql
+    environment: 
+      DB_HOST: ${DB_HOST}
+      DB_NAME: ${DB_NAME}
+      DB_PORT: ${DB_PORT}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_USER: ${DB_USER}
+    
 
 volumes:
   mysql_data:
