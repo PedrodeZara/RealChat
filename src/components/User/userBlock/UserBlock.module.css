@@ -19,6 +19,7 @@
 .section button p {
     position: relative;
     z-index: 1;
+    color: aliceblue;
 }
 
 .section_background_button {

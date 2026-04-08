@@ -16,7 +16,7 @@
     position: absolute;
     border-radius: 30px;
     backdrop-filter: blur(8px);
-    border: 1px solid rgba(100, 100, 100, 0.401);
+    border: 1px solid rgba(153, 153, 153, 0.401);
     box-shadow: 0px 4px 20px rgb(34, 34, 34);
     background-color: rgba(191, 191, 191, 0.193);
 }
@@ -47,6 +47,7 @@
     gap: 15px;
     box-shadow: 0px 4px 10px rgba(49, 49, 49, 0.557);
 }
+
 .user_foto {
     width: 50px;
     height: 50px;

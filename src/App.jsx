@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import ListUser from "./components/User/listUser/ListUser.jsx";
 import InsertButton from "./components/User/insertButton/InsertButton.jsx";
-import DisplayMessages from "./components/Messages/displayMessages/DisplayMessages.jsx";
+import DisplayMessagesBody from "./components/Messages/DisplayMessagesBody/DisplayMessagesBody.jsx";
 import "./style.css";
 
 export default function App() {
@@ -11,7 +11,7 @@ export default function App() {
     <>
         <main>
           <ListUser/>
-          
+          <DisplayMessagesBody/>
         </main>
     </>
   );
