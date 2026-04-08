@@ -17,20 +17,25 @@ export default function ListUser() {
     
     return (
         <section className={styles.section}>
+            <section className={styles.background_listuser}></section>
             <section className={styles.sectionInter}>
-                {loading && <p>Carregando...</p>}
-                {error && <p>Erro</p>}
-                {dataUser ? dataUser.map(user => {
-                    return <UserBlock
-                        idCon = {user.idCon}                  
-                        nome = {user.nome}                  
-                        descricao = {user.descContact}
-                        categoria = {user.categoria}                  
-                        telefone = {user.telefone}                  
-                    />
-                })
-                : <p>Não há contatos</p>
-                }
+            <section className={styles.user}> <section className={styles.user_foto}></section>Nome User</section>
+                <section>
+                    {loading && <p>Carregando...</p>}
+                    {error && <p>Erro</p>}
+                    {dataUser ? dataUser.map(user => {
+                        return <UserBlock
+                            idCon = {user.idCon}                  
+                            nome = {user.nome}                  
+                            descricao = {user.descContact}
+                            categoria = {user.categoria}                  
+                            telefone = {user.telefone}                  
+                        />
+                    })
+                    : <p>Não há contatos</p>
+                    }
+                </section>
+                <section className={styles.adicionar_contato}>+</section>
             </section>
         </section>
     );

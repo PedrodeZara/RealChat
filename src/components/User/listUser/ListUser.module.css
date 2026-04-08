@@ -1,19 +1,68 @@
 .section {
-    background: rgb(63, 63, 63);
-    width: 250px;
+    width: 315px;
     height: 100dvh;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-top: 10px;
     padding-bottom: 10px;
+    position:absolute;
+    margin-left: 15px;
+}
+
+.background_listuser {
+    width: 315px;
+    height: 98dvh;
+    position: absolute;
+    border-radius: 30px;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(100, 100, 100, 0.401);
+    box-shadow: 0px 4px 20px rgb(34, 34, 34);
+    background-color: rgba(191, 191, 191, 0.193);
 }
 
 .sectionInter {
     border-radius: 30px;
-    background-color: rgb(153, 153, 153);
-    max-width: 230px;
-    width: 230px;
-    box-shadow: 0px 0px 20px rgb(82, 82, 82);
+    max-width: 315px;
+    width: 315px;
     height: 100dvh;
+    position: relative;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    flex-direction: column;
+}
+
+.user {
+    background-color: aliceblue;
+    margin-top: 15px;
+    width: 275px;
+    height: 90px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    gap: 15px;
+    box-shadow: 0px 4px 10px rgba(49, 49, 49, 0.557);
+}
+.user_foto {
+    width: 50px;
+    height: 50px;
+    background-image: url("../../../../public/image.png");
+    border-radius: 100px;
+    background-position: center center;
+}
+
+.adicionar_contato {
+    background-color: aliceblue;
+    margin-bottom: 15px;
+    width: 275px;
+    height: 50px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 4px 10px rgba(49, 49, 49, 0.557);
 }

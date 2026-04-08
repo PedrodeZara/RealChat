@@ -22,7 +22,9 @@ export default function UserBlock({nome, descricao, categoria, telefone}) {
             }
             
         }}>
+                
             <button className={styles.buttonHover}>
+                <section className={styles.section_background_button}></section>
                 <div>
                     <p>{nome}</p>
                 <br/>
