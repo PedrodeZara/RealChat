@@ -72,3 +72,31 @@
     margin-right: 20px;
     border-radius: 50px;
 }
+
+.mainDisplay_messages {
+    width: 78vw;
+    height: 78dvh;
+    position: relative;
+    left: 30px;
+    top: 100px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.mensagemUser {
+    align-self: flex-end;
+    background: #f3f9ff;
+    color: #363636;
+    padding: 10px 15px 10px 15px;
+    border-radius: 15px;
+}
+
+.mensagemContato {
+    align-self: flex-start;
+    background: #262626;
+    color: #f4f9ff;
+    padding: 10px 15px 10px 15px;
+    border-radius: 15px;
+}

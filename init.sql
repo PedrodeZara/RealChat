@@ -46,6 +46,7 @@ insert into contacts (id_cat, id_user,id_con) values (1,1,2);
 insert into contacts (id_cat, id_user,id_con) values (1,1,3);
 insert into contacts (id_cat, id_user,id_con) values (1,1,4);
 insert into messages (descricao,telefone_user,telefone_con) values ("Teste de mensagem de pessoa 1 para pessoa 2",11111111111,11111111112);
+insert into messages (descricao,telefone_user,telefone_con) values ("Teste de mensagem de pessoa 2 para pessoa 1",11111111112,11111111111);
 insert into messages (descricao,telefone_user,telefone_con) values ("Teste de mensagem de pessoa 1 para pessoa 3",11111111111,11111111113);
 
 

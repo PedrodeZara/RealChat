@@ -1,6 +1,4 @@
 import React, { useEffect } from "react";
-import useMessageApi from "../../../hooks/useMessagesApi";
-import MessageBlock from "../messageBlock/MessageBlock"
 
 export default function DisplayMessages({id}) {
     const {request, messagesData, loading, error} = useMessageApi();
