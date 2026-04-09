@@ -10,7 +10,7 @@ class MessageRepository {
     }
 
     public function insert(Message $mes):bool {
-        $stmt = $this->pdo->prepare("INSERT INTO messages (descricao, id_user, id_con) VALUES (:descri,:telefone_user,:telefone_con)");
+        $stmt = $this->pdo->prepare("INSERT INTO messages (descricao, telefone_user, telefone_con) VALUES (:descri,:telefone_user,:telefone_con)");
         
         try {
             return $stmt->execute([

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./Messageblock.module.css"
 import useMessageApi from "../../../hooks/useMessagesApi";
 
-export default function Messageblock() {
+export default function Messageblock({refreshMessages}) {
     const {request, messagesData, loading, error} = useMessageApi();
 
     useEffect((() => {
@@ -10,7 +10,11 @@ export default function Messageblock() {
             await request("GET", null, 11111111111,11111111112);
         }
         fetchData();
-    }),[] );
+
+        const interval = setInterval(fetchData(),2000)
+        return () => clearInterval(interval)
+
+    }),[refreshMessages]);
     
 
 
