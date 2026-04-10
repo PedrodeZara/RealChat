@@ -6,6 +6,7 @@
     top: 10px;
     bottom: 10px;
     border-radius: 30px;
+    overflow: hidden;
 }
 
 .mainDisplay_glass {
@@ -16,8 +17,8 @@
     bottom: 10px;
     border-radius: 30px;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(153, 153, 153, 0.401);
-    box-shadow: 0px 4px 20px rgb(34, 34, 34);
+    border: 1px solid rgba(219, 219, 219, 0.401);
+    box-shadow: inset 0px 4px 10px rgb(223, 223, 223);
     background-color: rgba(191, 191, 191, 0.193);
     position: absolute;
     z-index: 0;

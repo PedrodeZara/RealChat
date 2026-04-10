@@ -16,6 +16,7 @@
     color: #363636;
     padding: 10px 15px 10px 15px;
     border-radius: 15px;
+    animation: entradaUser ease-in 0.5s;
 }
 
 .mensagemContato {
@@ -24,4 +25,32 @@
     color: #f4f9ff;
     padding: 10px 15px 10px 15px;
     border-radius: 15px;
+    animation: entradaContato ease-in 0.5s;
+}
+
+@keyframes entradaUser {
+    0% {
+        margin-right: -100px;
+        opacity: 0;
+
+    }
+
+    100% {
+        margin-right: 0px;
+        opacity: 1;
+
+    }
+}
+
+@keyframes entradaContato {
+    0% {
+        margin-left: -100px;
+        opacity: 0;
+    }
+
+    100% {
+        margin-left: 0px;
+        opacity: 1;
+
+    }
 }
